@@ -1,0 +1,1 @@
+The timer and channel config settings are stored here

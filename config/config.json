@@ -1,0 +1,40 @@
+{
+  "PORT": 3000,
+  "PROFILE": "test",
+  "TIME_FORMAT": "HH:mm:ss",
+  "CHANNELS": [
+    {
+      "id": "light",
+      "rpi_pin": "4",
+      "filename": "config/light_schedule.json"
+    },
+    {
+      "id": "co2",
+      "rpi_pin": "2",
+      "filename": "config/co2_schedule.json"
+    },
+    {
+      "id": "filter",
+      "rpi_pin": "3",
+      "filename": "config/filter_schedule.json"
+    }
+  ],
+  "OVERRIDES": {
+    "feeding": {
+      "channels": {
+        "co2": false,
+        "light": true,
+        "filter": false
+      },
+      "timeout": 10
+    },
+    "maintenance": {
+      "channels": {
+        "co2": false,
+        "light": true,
+        "filter": false
+      },
+      "timeout": 20
+    }
+  }
+}
