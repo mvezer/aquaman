@@ -1,6 +1,6 @@
 {
   "PORT": 3000,
-  "PROFILE": "test",
+  "PROFILE": "production",
   "TIME_FORMAT": "HH:mm:ss",
   "CHANNELS": [
     {
@@ -26,7 +26,7 @@
         "light": true,
         "filter": false
       },
-      "timeout": 10
+      "timeout": 1200
     },
     "maintenance": {
       "channels": {
@@ -34,7 +34,7 @@
         "light": true,
         "filter": false
       },
-      "timeout": 20
+      "timeout": 7200
     }
   }
 }

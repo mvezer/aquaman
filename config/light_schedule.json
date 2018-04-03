@@ -1,12 +1,6 @@
 {
   "schedule":[
-    { "time":"10:03:00", "value": "on" },
-    { "time":"10:03:05", "value": "off" },
-    { "time":"10:03:10", "value": "on" },
-    { "time":"10:03:15", "value": "off" },
-    { "time":"10:03:20", "value": "on" },
-    { "time":"10:03:25", "value": "off" },
-    { "time":"10:03:30", "value": "on" },
-    { "time":"10:03:35", "value": "off" }
+    { "time":"07:00:00", "value": "on" },
+    { "time":"22:00:00", "value": "off" }
   ]
 }
