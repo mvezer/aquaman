@@ -12,7 +12,7 @@ class GPIOservice {
 
   initPin(pin) {
     return new Promise((resolve, reject) => {
-      if (config.get('PROFILE') === 'production') {
+      if (config.get('NODE_ENV') === 'production') {
         gpio.openPin(pin, 'out', (error) => {
           if (error) {
             reject(error);
@@ -28,7 +28,7 @@ class GPIOservice {
 
   set(pin, state) {
     return new Promise((resolve, reject) => {
-      if (config.get('PROFILE') === 'production') {
+      if (config.get('NODE_ENV') === 'production') {
         gpio.write(pin, state ? 0 : 1, (error) => {
           if (error) {
             reject(error);

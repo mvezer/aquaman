@@ -1,6 +1,6 @@
 {
   "PORT": 3000,
-  "PROFILE": "production",
+  "NODE_ENV": "develop",
   "TIME_FORMAT": "HH:mm:ss",
   "CHANNELS": [
     {
