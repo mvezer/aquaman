@@ -12,46 +12,114 @@ $theme-font: verdana, sans-serif;
   color: $themeColor-Dark;
 }
 
-body {
-  @include linearGradient($themeColor-Light, $themeColor-Mid);
-  width: 100%;
-  height: 100%;
-}
-
 #aquaman-container {
   position: absolute;
-  left: 50%;
+  left: 0;
   top: 0;
-  max-width: 500px;
-  margin-left: -250px;
-  height: 100%;
-  padding: 20px;
+  width: 100%;
+  height: auto;
+  padding: 5%;
   text-align: center;
+  @include linearGradient($themeColor-Light, $themeColor-Mid);
+}
+
+#menu-header {
+  width: 100%;
+  height: 290px;
+  background-image: url('../images/aquaman.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#menu-container {
+  width: 100%;
+  height: auto;
 }
 
 .menu-button {
   display: inline-block;
-  min-width: 400px;
-  border-radius: 12px;
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 24px;
-  height: 64px;
+  width:75%;
+  border-radius: 20px;
+  padding: 20px 20px;
+  margin: 20px;
+  font-size: 82px;
+  height: 160px;
   cursor: pointer;
   outline: 0;
-  text-align: center;
+  text-align: left;
+  color: $themeColor-Dark;
   @include boxShadow(4px, 4px, 4px, #666666);
-  background: $themeColor-ButtonBackgroundDefault;
-  &.btn-default {
-    color: $themeColor-Dark;
+  &.btn-default-feeding {
+    background: $themeColor-ButtonBackgroundDefault url('../images/feeding-black.png') no-repeat 32px 16px;
   }
-  &.btn-active {
+  &.btn-default-maintenance {
+    background: $themeColor-ButtonBackgroundDefault url('../images/maintenance-black.png') no-repeat 32px 16px;
+  }
+  &.btn-active-feeding {
     font-weight: bold;
-    border: $themeColor-ButtonBorderActive solid 4px;
+    background: $themeColor-Highlight url('../images/feeding-black.png') no-repeat 32px 16px;
   }
-  &.btn-inactive {
+  &.btn-active-maintenance {
+    font-weight: bold;
+    background: $themeColor-Highlight url('../images/maintenance-black.png') no-repeat 32px 16px;
+  }
+  &.btn-inactive-feeding {
     color: $themeColor-Light;
-    border: $themeColor-Light solid 2px;
+    background: $themeColor-ButtonBackgroundDefault url('../images/feeding-white.png') no-repeat 32px 16px;
+  }
+  &.btn-inactive-maintenance {
+    color: $themeColor-Light;
+    background: $themeColor-ButtonBackgroundDefault url('../images/maintenance-white.png') no-repeat 32px 16px;
+  }
+  .caption {
+    padding-left: 188px;
+  }
+}
+
+.channel-container {
+  width:75%;
+  height: 160px;
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+}
+
+.channel-button {
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  border: 0;
+  border-radius: 20px;
+  padding: 20px 20px;
+  margin: 0 40px;
+  outline: 0;
+  cursor: pointer;
+
+  &.override {
+    border: $themeColor-Highlight 8px solid;
   }
 
+  &.light-on {
+    background: $themeColor-Highlight url('../images/light-black.png') no-repeat center;
+  }
+
+  &.light-off {
+    background: $themeColor-ButtonBackgroundDefault url('../images/light-black.png') no-repeat center;
+  }
+
+  &.filter-on {
+    background: $themeColor-Highlight url('../images/filter-black.png') no-repeat center;
+  }
+
+  &.filter-off {
+    background: $themeColor-ButtonBackgroundDefault url('../images/filter-black.png') no-repeat center;
+  }
+
+  &.co2-on {
+    background: $themeColor-Highlight url('../images/co2-black.png') no-repeat center;
+  }
+
+  &.co2-off {
+    background: $themeColor-ButtonBackgroundDefault url('../images/co2-black.png') no-repeat center;
+  }
 }

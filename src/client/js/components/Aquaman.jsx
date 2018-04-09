@@ -10,22 +10,24 @@ class Aquaman extends Component {
     super(props);
     this.aquamanService = new AquamanService();
     this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
-    this.updateStatus = this.updateStatus.bind(this);
+    this.getStatus = this.getStatus.bind(this);
 
     this.state = {
       feedingState: ButtonStates.INACTIVE,
       maintenanceState: ButtonStates.INACTIVE,
+      channels: {light: false, co2: false, filter: false}
     };
   }
 
   async componentWillMount() {
-    this.updateStatus();
-    setInterval(this.updateStatus.bind(this), 1000);
+    this.getStatus();
+    setInterval(this.getStatus.bind(this), 1000);
   }
 
-  setButtonStates(status) {
+  updateStates(status) {
     let newFeedingState = this.state.feedingState;
     let newMaintenanceState = this.state.maintenanceState;
+
     if (!status.override) {
       newFeedingState = ButtonStates.DEAFULT;
       newMaintenanceState = ButtonStates.DEAFULT;
@@ -40,16 +42,21 @@ class Aquaman extends Component {
     }
 
     if (this.state.feedingState !== newFeedingState
-      || this.state.maintenanceState !== newMaintenanceState) {
+      || this.state.maintenanceState !== newMaintenanceState
+      || this.state.channels.co2 !== status.channels.co2
+      || this.state.channels.filter !== status.channels.filter
+      || this.state.channels.light !== status.channels.light) {
       this.setState({
         feedingState: newFeedingState,
         maintenanceState: newMaintenanceState,
+        channels: status.channels
       });
     }
   }
 
-  async updateStatus() {
-    this.setButtonStates((await this.aquamanService.getStatus()).result);
+  async getStatus() {
+    const newStatus = (await this.aquamanService.getStatus()).result;
+    this.updateStates(newStatus);
   }
 
   async handleMenuItemClick(channel) {
@@ -62,7 +69,7 @@ class Aquaman extends Component {
     }
 
     if (status) {
-      this.setButtonStates(status);
+      this.updateStates(status);
     } else {
       throw new Error(`Unknown channel: ${channel}`);
     }
@@ -71,11 +78,12 @@ class Aquaman extends Component {
   render() {
     return (
       <div>
-        <h1>Aquaman 2</h1>
+        <div id="menu-header"></div>
         <Menu
           clickCallback={this.handleMenuItemClick}
           feedingState={this.state.feedingState}
           maintenanceState={this.state.maintenanceState}
+          channels={this.state.channels}
         />
       </div>
     );

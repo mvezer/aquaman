@@ -9,22 +9,26 @@ class MenuItem extends Component {
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  getStateClass() {
-    let buttonClassName;
+  getButtonClass() {
+    let stateClass;
 
     if (this.props.buttonState === ButtonStates.DEAFULT) {
-      buttonClassName = 'btn-default';
+      stateClass = 'default';
     } if (this.props.buttonState === ButtonStates.ACTIVE) {
-      buttonClassName = 'btn-active';
+      stateClass = 'active';
     } else if (this.props.buttonState === ButtonStates.INACTIVE) {
-      buttonClassName = 'btn-inactive';
+      stateClass = 'inactive';
     }
 
-    if (buttonClassName) {
-      return `menu-button ${buttonClassName}`;
+    if (stateClass) {
+      return `menu-button btn-${stateClass}-${this.props.buttonId}`;
     }
 
     throw new Error(`Invalid button state: ${this.props.buttonState}`);
+  }
+
+  getIconClass() {
+    return `menu-icon ${this.props.buttonId}-icon`;
   }
 
   handleButtonClick(event) {
@@ -36,8 +40,8 @@ class MenuItem extends Component {
 
   render() {
     return (
-      <button className={this.getStateClass()} onClick={this.handleButtonClick}>
-        {this.props.caption}
+      <button className={this.getButtonClass()} onClick={this.handleButtonClick}>
+        <span className="caption">{this.props.caption}</span>
       </button>
     );
   }
